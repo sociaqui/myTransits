@@ -40,7 +40,7 @@ services:
           - network
   mysql:
     container_name: mysql
-    image: mysql
+    image: mysql:5.7
     ports:
       - "3306:3306"
     env_file:
@@ -48,11 +48,6 @@ services:
     volumes:
       - ./data/db:/var/lib/mysql
     tty: true
-    logging:
-      driver: json-file
-      options:
-        max-size: 20m
-        max-file: "1"
     mem_limit: 9g
     memswap_limit: -1
     restart: unless-stopped
@@ -81,8 +76,8 @@ services:
     ports:
       - 81:80
     volumes:
-      - ./symfony:/var/www/symfony
       - ./logs/nginx/:/var/log/nginx
+      - ./logs/symfony/:/var/log/symfony
       - ./docker/configs/elk/logstash:/etc/logstash
       - ./docker/configs/elk/logstash/patterns:/opt/logstash/patterns
 
