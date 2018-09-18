@@ -23,7 +23,7 @@ A simple, one endpoint API for calculating the optimal route between multiple po
 
 3. Update your system host file (add local.test.task)
 
-4. Install Symfony & create database
+4. Install dependencies && update database schema
 
         ```bash
         $ docker-compose exec php sh
